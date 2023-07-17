@@ -33,15 +33,45 @@
 	<span class="background-overlay" />
 	<div class="content">
 		<div class="about-container">
-			<div class="about-item" id="item-server">
+			<div class="about-item" id="item-left">
 				<div in:fly={{ duration: imageTransitionFlyDuration, x: -imageTransitionFlyOffset }}>
+					<img
+						class="about-image"
+						src="/img/about/about-img-irys.webp"
+						alt="IRyS doing a thumbs up"
+						in:fade={{ duration: imageAppearDuration }}
+					/>
+				</div>
+				<div
+					class="about-body"
+					in:fade={{ delay: bodyDelayDuration, duration: bodyAppearDuration }}
+				>
+					<div
+						in:fly={{
+							delay: bodyDelayDuration,
+							duration: descriptionTransitionFlyDuration,
+							y: descriptionTransitionFlyOffset,
+							easing: backOut
+						}}
+					>
+						<div class="header">About IRyS</div>
+						<div class="about-body-desc">
+							IRyS is the Diva of hololive English's Project: HOPE.<br />
+							Check out her channel <a href={link_irys} target="_blank">here</a>!
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="about-item" id="item-right">
+				<div in:fly={{ duration: imageTransitionFlyDuration, x: imageTransitionFlyOffset }}>
 					<picture>
 						<!--Display a special image when the layout of items change-->
-						<source srcset="/img/about/about-img-server-split.png" media="(max-width: 767px)" />
+						<source srcset="/img/about/about-img-server-split.webp" media="(max-width: 767px)" />
 						<img
 							class="about-image"
-							src="/img/about/about-img-server.png"
-							alt="GuyRyS doing half a heart on the right"
+							src="/img/about/about-img-server.webp"
+							alt="GuyRyS doing half a heart on the left"
 							in:fade={{ duration: imageAppearDuration }}
 						/>
 					</picture>
@@ -63,36 +93,6 @@
 							This fan project is brought to you by the IRyStocrats in
 							<a href={link_irys_discord} target="blank">IRyS' Stage</a> (IRyS' fan discord) and
 							<a href={link_holoenfans_discord} target="_blank">HoloEN Fans</a>.
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="about-item" id="item-irys">
-				<div in:fly={{ duration: imageTransitionFlyDuration, x: imageTransitionFlyOffset }}>
-					<img
-						class="about-image"
-						src="/img/about/about-img-irys.png"
-						alt="IRyS doing a thumbs up on the left"
-						in:fade={{ duration: imageAppearDuration }}
-					/>
-				</div>
-				<div
-					class="about-body"
-					in:fade={{ delay: bodyDelayDuration, duration: bodyAppearDuration }}
-				>
-					<div
-						in:fly={{
-							delay: bodyDelayDuration,
-							duration: descriptionTransitionFlyDuration,
-							y: descriptionTransitionFlyOffset,
-							easing: backOut
-						}}
-					>
-						<div class="header">About IRyS</div>
-						<div class="about-body-desc">
-							IRyS is the Diva of hololive English's Project: HOPE.<br />
-							Check out her channel <a href={link_irys} target="_blank">here</a>!
 						</div>
 					</div>
 				</div>
@@ -209,12 +209,12 @@
 			padding-right: 32px;
 		}
 
-		#item-server {
+		#item-left {
 			padding-right: 0px;
 			margin-left: auto;
 		}
 
-		#item-irys {
+		#item-right {
 			padding-left: 0px;
 			margin-right: auto;
 		}
