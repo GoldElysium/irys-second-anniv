@@ -42,6 +42,6 @@
 	"dependencies": {
 		"photoswipe": "^5.3.7",
 		"qs": "^6.11.2",
-		"slate": "^0.94.1"
+		"slate": "^0.103.0"
 	}
 }
