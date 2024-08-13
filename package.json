@@ -5,43 +5,45 @@
 	"private": true,
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/GrygrFlzr/irys-second-anniv.git"
+		"url": "git+https://github.com/GoldElysium/irys-second-anniv.git"
 	},
 	"license": "MIT",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
-		"check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch",
-		"lint": "prettier --plugin-search-dir . --check . && eslint .",
-		"format": "prettier --plugin-search-dir . --write ."
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"lint": "prettier --check . && eslint .",
+		"format": "prettier --write ."
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-auto": "^2.0.0",
-		"@sveltejs/kit": "^1.5.0",
-		"@types/node": "^18.16.18",
-		"@typescript-eslint/eslint-plugin": "^5.45.0",
-		"@typescript-eslint/parser": "^5.45.0",
-		"eslint": "^8.28.0",
-		"eslint-config-prettier": "^8.5.0",
-		"eslint-plugin-svelte": "^2.26.0",
-		"prettier": "^2.8.0",
-		"prettier-plugin-svelte": "^2.8.1",
-		"svelte": "^3.54.0",
-		"svelte-check": "^3.0.1",
-		"typescript": "^5.0.0",
-		"vite": "^4.3.0"
+		"@eslint/js": "^9.9.0",
+		"@sveltejs/adapter-auto": "^3.2.4",
+		"@sveltejs/kit": "^2.5.22",
+		"@sveltejs/vite-plugin-svelte": "^3.0.0",
+		"@types/node": "^22.2.0",
+		"@types/qs": "^6.9.15",
+		"eslint": "^9.9.0",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-plugin-svelte": "^2.43.0",
+		"globals": "^15.9.0",
+		"prettier": "^3.3.3",
+		"prettier-plugin-svelte": "^3.2.6",
+		"svelte": "^4.2.18",
+		"svelte-check": "^3.8.5",
+		"typescript": "^5.5.4",
+		"typescript-eslint": "^8.1.0",
+		"vite": "^5.4.0"
 	},
-	"packageManager": "pnpm@8.4.0",
+	"packageManager": "pnpm@9.7.0",
 	"engines": {
 		"node": ">=18",
-		"pnpm": "^8.0.0"
+		"pnpm": "^9.0.0"
 	},
 	"type": "module",
 	"dependencies": {
-		"photoswipe": "^5.3.7",
-		"qs": "^6.11.2",
-		"slate": "^0.94.1"
+		"photoswipe": "^5.4.4",
+		"qs": "^6.13.0"
 	}
 }

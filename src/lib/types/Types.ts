@@ -1,5 +1,3 @@
-import type { Element, Text } from 'slate';
-
 type Image = {
 	src: string;
 	smallSrc?: string; // Used in cases where we need a smaller version if the base image is too big!
@@ -14,7 +12,8 @@ type TimelineData = {
 	title: string;
 	background_image?: Image;
 	images: Array<Image>;
-	content: Array<RichtextElement | RichtextTextElement>;
+	// eslint-disable-next-line
+	content: any;
 	vfx?: string;
 };
 
@@ -22,24 +21,6 @@ type YearlyTimelineData = {
 	year: number;
 	events: Array<TimelineData>;
 	id: string;
-};
-
-type RichtextElement = Element & {
-	type: string;
-	children: Array<RichtextElement | RichtextTextElement>;
-};
-
-type RichtextLinkElement = RichtextElement & {
-	linkType: string;
-	url: string;
-	newTab: boolean;
-};
-
-type RichtextTextElement = Text & {
-	bold: boolean;
-	italic: boolean;
-	underline: boolean;
-	strikethrough: boolean;
 };
 
 type ArtSubmissionData = {
@@ -50,12 +31,4 @@ type ArtSubmissionData = {
 	images: Array<Image>;
 };
 
-export type {
-	Image,
-	TimelineData,
-	RichtextElement,
-	RichtextTextElement,
-	RichtextLinkElement,
-	YearlyTimelineData,
-	ArtSubmissionData
-};
+export type { Image, TimelineData, YearlyTimelineData, ArtSubmissionData };

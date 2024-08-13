@@ -1,11 +1,6 @@
 import fetchAllFromCMS from '$lib/js/FetchFromCMS';
 import type { Event } from '$lib/types/HefCmsTypes';
-import type {
-	RichtextElement,
-	RichtextTextElement,
-	TimelineData,
-	YearlyTimelineData
-} from '$lib/types/Types';
+import type { TimelineData, YearlyTimelineData } from '$lib/types/Types';
 import getImageObject from '$lib/js/ImageTools';
 
 import { env } from '$env/dynamic/private';
@@ -46,21 +41,9 @@ export const load = async function loadDataFromCMS() {
 			backgroundImage: element.backgroundImage
 				? getImageObject(element.backgroundImage)
 				: undefined,
+			// eslint-disable-next-line
 			images: element.images.map((img: any) => getImageObject(img)),
-			// Not 100% sure if this aggressive type checking is required.
-			content: element.content.map((element: { [k: string]: unknown }) => {
-				if (Object.hasOwn(element, 'type') || Object.hasOwn(element, 'children')) {
-					return element as unknown as RichtextElement;
-				} else if (Object.hasOwn(element, 'text')) {
-					return element as unknown as RichtextTextElement;
-				} else {
-					throw new Error(
-						`Unexpected element "${JSON.stringify(
-							element
-						)}", does not conform to RichtextElement or RichtextTextElement.`
-					);
-				}
-			}),
+			content: element.content,
 			vfx: element.devprops?.find((prop) => prop.key == 'vfx')?.value
 		};
 	});

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import SimpleImageGallery from '$lib/components/SimpleImageGallery.svelte';
-	import SimpleSlateRenderer from '$lib/components/SimpleSlateRenderer.svelte';
+	import LexicalRenderer from '$lib/components/LexicalRenderer.svelte';
 	import TitleLink from '$lib/components/TitleLink.svelte';
 	import { TIMELINE_ID_PREFIX, toDomId } from '$lib/js/timelineContentLink';
 	import type { TimelineData, YearlyTimelineData } from '$lib/types/Types';
@@ -97,9 +97,9 @@
 	}
 
 	function extractBackgroundImage(event: TimelineData | undefined): string | undefined {
-		if (event?.background_image != null) {
+		if (event?.background_image) {
 			return event.background_image.src;
-		} else if (event?.images != null) {
+		} else if (event?.images && event.images.length > 0) {
 			return event?.images[0].src;
 		} else {
 			return undefined;
@@ -113,7 +113,7 @@
 
 		let val = extractBackgroundImage(event);
 
-		if (val !== undefined) {
+		if (val) {
 			if (isEntering) {
 				validBackgroundElements.add(val);
 			} else {
@@ -123,7 +123,7 @@
 
 		if (validBackgroundElements.size > 0) {
 			const newSrc = [...validBackgroundElements][0];
-			if (newSrc !== undefined) {
+			if (newSrc) {
 				src = newSrc;
 			}
 		}
@@ -134,7 +134,7 @@
 	}
 
 	function useConfetti(item: TimelineData) {
-		return item.vfx != undefined && item.vfx == 'confetti';
+		return item.vfx === 'confetti';
 	}
 
 	function initBackgroundImage(element: HTMLElement, event: TimelineData) {
@@ -144,7 +144,7 @@
 
 		if (isInBounds && !$prefersReducedMotion) {
 			let val = extractBackgroundImage(event);
-			if (val !== undefined) {
+			if (val) {
 				validBackgroundElements.add(val);
 				src = val;
 			}
@@ -224,7 +224,7 @@
 
 	function checkDiamond() {
 		const intersectingEventsArray = Object.entries(intersectingEvents)
-			.filter(([_, intersecting]) => intersecting)
+			.filter(([, intersecting]) => intersecting)
 			.map(([id]) => {
 				const element = revealSections[id];
 				return { rect: element.getBoundingClientRect(), id };
@@ -279,7 +279,7 @@
 								<h2>{item.title}</h2>
 							</TitleLink>
 							<div class="milestone-content">
-								<SimpleSlateRenderer richTextElements={item.content} />
+								<LexicalRenderer nodes={item.content.root.children} />
 							</div>
 						</div>
 						<div class="timeline-img-container">
@@ -411,7 +411,7 @@
 		top: 50%;
 		position: absolute;
 	}
-	/* Dot beside the timeline 
+	/* Dot beside the timeline
 .timeline-item::before{
     content: '';
     display: block;

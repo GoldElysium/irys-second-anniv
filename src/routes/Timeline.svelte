@@ -60,7 +60,7 @@
 	}
 
 	function scrollToEventsIfNotAlready() {
-		scrollY < $globalStore.heroHeight && scrollTo({ top: $globalStore.heroHeight + 10 });
+		if(scrollY < $globalStore.heroHeight) scrollTo({ top: $globalStore.heroHeight + 10 });
 	}
 </script>
 
